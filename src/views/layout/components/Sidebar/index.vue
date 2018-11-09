@@ -5,9 +5,9 @@
             :default-active="$route.path"
             :collapse="isCollapse"
             mode="vertical"
-            background-color="#304156"
-            text-color="#bfcbd9"
-            active-text-color="#409EFF"
+            background-color="#4f6293"
+            text-color="#FAFAFA"
+            active-text-color="#4F6394"
         >
             <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path"/>
         </el-menu>
@@ -33,3 +33,17 @@
         }
     }
 </script>
+
+<style lang="scss">
+    .scrollbar-wrapper {
+        .el-menu-item {
+            font-size: 14px;
+            height: 50px;
+            line-height: 50px;
+            // &.is-active {
+            //     background-color: white !important;
+            // }
+        }
+    }
+</style>
+

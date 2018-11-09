@@ -22,8 +22,12 @@
 <style scoped>
     .app-main {
         /*50 = navbar  */
-        min-height: calc(100vh - 50px);
+        /* min-height: calc(100vh - 56px); */
         position: relative;
-        overflow: hidden;
+        padding: 20px;
+        padding-top: 0;
+        margin-top: 56px;
+        height: 100%;
+        overflow: auto;
     }
 </style>

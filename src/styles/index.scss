@@ -1,3 +1,4 @@
+@import './reset.scss';
 @import './variables.scss';
 @import './mixin.scss';
 @import './transition.scss';
@@ -9,7 +10,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+    font-family: Microsoft YaHei, Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 }
 
 label {
@@ -58,7 +59,7 @@ a:hover {
 }
 
 .clearfix {
-    &:after {
+    &::after {
         visibility: hidden;
         display: block;
         font-size: 0;
@@ -66,6 +67,13 @@ a:hover {
         clear: both;
         height: 0;
     }
+}
+
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
 }
 
 //main-container全局样式

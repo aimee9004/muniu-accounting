@@ -10,7 +10,7 @@
             <el-dropdown-menu slot="dropdown" class="user-dropdown">
                 <router-link class="inlineBlock" to="/">
                     <el-dropdown-item>
-                        Home
+                        Home11
                     </el-dropdown-item>
                 </router-link>
                 <el-dropdown-item divided>
@@ -52,9 +52,15 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
     .navbar {
-        height: 50px;
-        line-height: 50px;
+        height: 56px;
+        line-height: 56px;
         border-radius: 0px !important;
+        box-shadow:0px 3px 9px 0px rgba(0, 0, 0, 0.35);
+        background-color: #F3F3F4;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        z-index: 10;
         .hamburger-container {
             line-height: 58px;
             height: 50px;
