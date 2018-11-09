@@ -1,68 +1,71 @@
 <template>
     <div class="main-page">
-        <el-table
-            ref="singleTable"
-            :data="tableData"
-            highlight-current-row
-            @current-change="handleCurrentChange"
-            style="width: 100%">
-            <el-table-column
-            type="index"
-            width="50">
-            </el-table-column>
-            <el-table-column
-            property="date"
-            label="日期"
-            width="120">
-            </el-table-column>
-            <el-table-column
-            property="name"
-            label="姓名"
-            width="120">
-            </el-table-column>
-            <el-table-column
-            property="address"
-            label="地址">
-            </el-table-column>
-        </el-table>
-        <div style="margin-top: 20px">
-            <el-button @click="setCurrent(tableData[1])">选中第二行</el-button>
-            <el-button @click="setCurrent()">取消选择</el-button>
+        <div class="title">代理商管理</div>
+        <div class="top-btn">
+            <el-button class="base-solid-btn">新代理商加盟</el-button>
         </div>
+        <ul class="filter-block clearfix">
+            <li>
+                <span>名下财务公司数量：</span>
+                <el-select v-model="filterData.underFinanceCompNumVal" placeholder="全部">
+                    <el-option v-for="item in underFinanceCompNumArr" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                </el-select>
+            </li>
+            <li>
+                <span>入驻时长：</span>
+                <el-select v-model="filterData.checkInTime" placeholder="全部">
+                    <el-option v-for="item in underFinanceCompNumArr" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                </el-select>
+            </li>
+            <li>
+                <span>状态：</span>
+                <el-select v-model="filterData.status" placeholder="正常">
+                    <el-option v-for="item in underFinanceCompNumArr" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                </el-select>
+            </li>
+            <li>
+                <span>搜索：</span>
+                <el-input v-model="filterData.searchInfo" placeholder="请输入关键字快速查找公司"></el-input>
+            </li>
+        </ul>
+        <list-view></list-view>
     </div>
 </template>
 
 <script>
+    import ListView from '@/views/main-page/components/list-view'
     export default {
         data() {
             return {
-                tableData: [{
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1517 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1519 弄'
-                }, {
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1516 弄'
+                filterData: {
+                    underFinanceCompNumVal: '', // 名下财务公司数量
+                    checkInTime: '',            // 入住时长
+                    status: '',                 // 状态
+                    searchInfo: '',             // 搜索
+                },
+                underFinanceCompNumArr: [{
+                        value: '选项1',
+                        label: '黄金糕'
+                    }, {
+                        value: '选项2',
+                        label: '双皮奶'
+                    }, {
+                        value: '选项3',
+                        label: '蚵仔煎'
+                    }, {
+                        value: '选项4',
+                        label: '龙须面'
+                    }, {
+                        value: '选项5',
+                        label: '北京烤鸭'
                 }],
-                currentRow: null
             }
         },
         methods: {
-            setCurrent(row) {
-                this.$refs.singleTable.setCurrentRow(row);
-            },
-            handleCurrentChange(val) {
-                this.currentRow = val;
-            }
+
+        },
+        components: {
+            ListView
         }   
     }
 </script>
