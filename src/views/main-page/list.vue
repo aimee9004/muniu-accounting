@@ -2,7 +2,7 @@
     <div class="main-page">
         <div class="title">代理商管理</div>
         <div class="top-btn">
-            <el-button class="base-solid-btn">新代理商加盟</el-button>
+            <el-button @click="goAddInfo" class="base-solid-btn">新代理商加盟</el-button>
         </div>
         <div class="bg-white-block">
             <ul class="filter-block clearfix">
@@ -80,6 +80,11 @@
             }
         },
         methods: {
+            goAddInfo() {
+                this.$router.push({
+                    name: 'new-agent'
+                })
+            },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
             },

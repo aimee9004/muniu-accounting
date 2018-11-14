@@ -9,6 +9,7 @@ Vue.use(Router)
 /* Layout */
 import Layout from '../views/layout/Layout'
 import CommonList from '../views/main-page/list'
+import AddInfo from '../views/main-page/add-info'
 
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
@@ -49,12 +50,19 @@ export const constantRouterMap = [
         component: Layout,
         redirect: '/agent-manage/index',
         hidden: ifHidden,
-        children: [{
-            path: 'index',
-            name: 'agent-index',
-            component: CommonList,
-            meta: { title: '代理商管理', icon: 'test' }
-        }]
+        children: [
+            {
+                path: 'index',
+                name: 'agent-index',
+                component: CommonList,
+                meta: { title: '代理商管理', icon: 'test' }
+            }, {
+                path: 'new-agent',
+                name: 'new-agent',
+                hidden: true,
+                component: AddInfo
+            }
+        ]
     },
     
     // 财务公司管理

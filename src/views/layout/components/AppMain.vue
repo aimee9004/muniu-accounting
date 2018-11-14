@@ -27,6 +27,7 @@
         padding: 20px;
         padding-top: 0;
         margin-top: 56px;
+        padding-bottom: 56px;
         height: 100%;
         overflow: auto;
     }
