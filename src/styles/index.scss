@@ -108,6 +108,10 @@ a:hover {
 
 // main-page
 .main-page {
+    br {
+        display: block;
+        clear: both;
+    }
     .title {
         font-size: 24px;
         color: #616161;
@@ -127,11 +131,43 @@ a:hover {
         font-weight: bold;
         margin-bottom: 20px;
     }
+    .page-title {
+        font-size: 18px;
+        color: #616161;
+        padding: 20px 0;
+        font-weight: bold;
+        text-align: center;
+    }
     .el-breadcrumb__inner {        
         &.is-link {
             font-weight: normal;
             color: #616161;
         }
+    }       
+    .item-block {
+        border-bottom: 1px solid #DDDDDD;
+        margin-bottom: 22px;            
+        .el-form-item {
+            display: inline-block;
+            color: #5B5B5B;
+            font-weight: normal;
+            float: left;
+        }
+        &::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        &.noborder {
+            border-bottom: 0;
+        }
+    } 
+    .el-form-item__label {
+        color: #5B5B5B;
+        font-weight: normal;
+    }
+    .small-input {
+        width: 130px;
     }
     .top-btn {
         margin: 16px 0 30px;

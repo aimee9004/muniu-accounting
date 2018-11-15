@@ -10,6 +10,7 @@ Vue.use(Router)
 import Layout from '../views/layout/Layout'
 import CommonList from '../views/main-page/list'
 import AddInfo from '../views/main-page/add-info'
+import Setting from '../views/main-page/setting'
 
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
@@ -130,7 +131,7 @@ export const constantRouterMap = [
         children: [{
             path: 'index',
             name: 'setting-index',
-            component: CommonList,
+            component: Setting,
             meta: { title: '设置', icon: 'test' }
         }]
     },

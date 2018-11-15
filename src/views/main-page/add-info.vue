@@ -138,39 +138,17 @@
         br {
             clear: both;
         }
-        .item-block {
-            border-bottom: 1px solid #DDDDDD;
-            margin-bottom: 22px;            
-            .el-form-item {
-                display: inline-block;
-                color: #5B5B5B;
-                font-weight: normal;
-                float: left;
-            }
-            &::after {
-                content: "";
-                display: block;
-                clear: both;
-            }
-        }
-        .small-input {
-            width: 100px;
-        }
     }
 </style>
 <style lang="scss">
-    .add-info {
-        .el-form-item__label {
-            color: #5B5B5B;
-            font-weight: normal;
-        }
-        .el-form-item__content {
-            width: 230px;
-        }
+    .add-info {        
         .address-item {            
             .el-form-item__content {                
                 width: 610px;
             }
+        }        
+        .el-form-item__content {
+            width: 230px;
         }
     }
 </style>
