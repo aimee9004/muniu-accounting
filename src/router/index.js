@@ -16,6 +16,8 @@ import AddInfo from '../views/main-page/add-info'
 import Setting from '../views/main-page/setting'
 // 财务管理总览
 import FinancingManage from '../views/main-page/financing-manage'
+// 生成订单
+import GenerateOrder from '../views/main-page/financing-manage/generate-order'
 
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
@@ -130,6 +132,11 @@ export const constantRouterMap = [
                 name: 'incomeExpensesDetail',
                 component: CommonList,
                 hidden: true,
+            }, {
+                path: 'generate-order',
+                name: 'generateOrder',
+                component: GenerateOrder,
+                hidden: true
             }
         ]
     },

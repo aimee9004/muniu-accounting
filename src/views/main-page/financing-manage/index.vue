@@ -12,7 +12,7 @@
                 <p>未使用数量： <strong>1400</strong></p>
                 <p>总金豆数量： <strong>3400</strong></p>
                 <div class="account-info-btn">
-                    <el-button type="primary">立即充值</el-button>
+                    <el-button @click="goRecharge" type="primary">立即充值</el-button>
                     <el-button>订单查看</el-button>
                 </div>
             </div>
@@ -65,6 +65,13 @@
                         address: '上海市普陀区金沙江路 1516 弄'
                     }
                 ],
+            }
+        },
+        methods: {
+            goRecharge() {
+                this.$router.push({
+                    name: 'generateOrder'
+                })
             }
         }   
     }

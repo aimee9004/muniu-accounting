@@ -107,7 +107,12 @@ a:hover {
 }
 
 // main-page
-.main-page {    
+.main-page {               
+    .bg-white-block {
+        background-color: white;
+        overflow: hidden;
+        padding: 15px 10px;
+    }   
     .list-table {
         th {
             background-color: #f5f5f5;

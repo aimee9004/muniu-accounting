@@ -88,12 +88,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .main-page {              
-        .bg-white-block {
-            background-color: white;
-            overflow: hidden;
-            padding: 15px 10px;
-        }
+    .main-page { 
         .setting-title {
             font-size: 14px;
             color: #5B5B5B;
