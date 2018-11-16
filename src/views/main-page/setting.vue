@@ -1,7 +1,7 @@
 <template>
     <div class="main-page setting-page">        
         <el-breadcrumb separator-class="el-icon-minus" class="title">
-            <el-breadcrumb-item :to="{ name: 'setting-index' }">设置</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ name: 'settingIndex' }">设置</el-breadcrumb-item>
             <el-breadcrumb-item>费用设置</el-breadcrumb-item>
         </el-breadcrumb>
         <h2 class="page-title">费用设置</h2>

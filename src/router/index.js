@@ -8,9 +8,14 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '../views/layout/Layout'
+// 列表
 import CommonList from '../views/main-page/list'
+// 新增信息
 import AddInfo from '../views/main-page/add-info'
+// 设置
 import Setting from '../views/main-page/setting'
+// 财务管理总览
+import FinancingManage from '../views/main-page/financing-manage'
 
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
@@ -54,12 +59,12 @@ export const constantRouterMap = [
         children: [
             {
                 path: 'index',
-                name: 'agent-index',
+                name: 'agentIndex',
                 component: CommonList,
                 meta: { title: '代理商管理', icon: 'test' }
             }, {
                 path: 'new-agent',
-                name: 'new-agent',
+                name: 'newAgent',
                 hidden: true,
                 component: AddInfo
             }
@@ -74,7 +79,7 @@ export const constantRouterMap = [
         hidden: ifHidden,
         children: [{
             path: 'index',
-            name: 'finance_company-index',
+            name: 'financeCompanyIndex',
             component: CommonList,
             meta: { title: '财务公司管理', icon: 'test' }
         }]
@@ -88,7 +93,7 @@ export const constantRouterMap = [
         hidden: ifHidden,
         children: [{
             path: 'index',
-            name: 'busi_books-index',
+            name: 'busiBooksIndex',
             component: CommonList,
             meta: { title: '企业账簿管理', icon: 'test' }
         }]
@@ -102,7 +107,7 @@ export const constantRouterMap = [
         hidden: ifHidden,
         children: [{
             path: 'index',
-            name: 'recharge_order-index',
+            name: 'rechargeOrderIndex',
             component: CommonList,
             meta: { title: '充值订单管理', icon: 'test' }
         }]
@@ -114,12 +119,19 @@ export const constantRouterMap = [
         component: Layout,
         redirect: '/financing-manage/index',
         hidden: ifHidden,
-        children: [{
-            path: 'index',
-            name: 'financing-index',
-            component: CommonList,
-            meta: { title: '财务管理', icon: 'test' }
-        }]
+        children: [
+            {
+                path: 'index',
+                name: 'financingIndex',
+                component: FinancingManage,
+                meta: { title: '财务管理', icon: 'test' }
+            }, {
+                path: 'income_expenses-detail',
+                name: 'incomeExpensesDetail',
+                component: CommonList,
+                hidden: true,
+            }
+        ]
     },
     
     // 设置
@@ -130,7 +142,7 @@ export const constantRouterMap = [
         hidden: ifHidden,
         children: [{
             path: 'index',
-            name: 'setting-index',
+            name: 'settingIndex',
             component: Setting,
             meta: { title: '设置', icon: 'test' }
         }]

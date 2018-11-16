@@ -1,8 +1,7 @@
 <template>
-    <div class="list-table">        
+    <div>        
         <el-table
-            border
-            key="agent-index"
+            border class="list-table"
             :data="tableData"
             highlight-current-row
             @current-change="handleCurrentChange"
@@ -13,7 +12,7 @@
             </el-table-column>
 
             <!-- 代理商管理 -->
-            <el-table-column v-if="currMenuName==='agent-index'" key="agent-index" label="操作" fixed="right" width="300" align="center">
+            <el-table-column v-if="currMenuName==='agentIndex'" key="agentIndex" label="操作" fixed="right" width="300" align="center">
                 <template slot-scope="scope">
                     <el-button size="mini" type="primary">客户详情</el-button>
                     <el-button size="mini" type="primary">停用</el-button>
@@ -22,7 +21,7 @@
             </el-table-column>
 
             <!-- 财务公司管理 -->
-            <el-table-column v-if="currMenuName==='finance_company-index'" key="finance_company-index" label="操作" fixed="right" width="300" align="center">
+            <el-table-column v-if="currMenuName==='financeCompanyIndex'" key="financeCompanyIndex" label="操作" fixed="right" width="300" align="center">
                 <template slot-scope="scope">
                     <el-button size="mini" type="primary">查看详情</el-button>
                     <el-button size="mini" type="primary">终止</el-button>
@@ -31,14 +30,14 @@
             </el-table-column>            
                              
             <!-- 企业账簿管理 -->
-            <el-table-column v-if="currMenuName==='busi_books-index'" key="busi_books-index" label="操作" fixed="right" width="100" align="center">
+            <el-table-column v-if="currMenuName==='busiBooksIndex'" key="busiBooksIndex" label="操作" fixed="right" width="100" align="center">
                 <template slot-scope="scope">
                     <el-button size="mini" type="primary">账簿详情</el-button>
                 </template>
             </el-table-column>            
             
             <!-- 充值订单管理 -->
-            <el-table-column v-if="currMenuName==='recharge_order-index'" key="recharge_order-index" label="操作" fixed="right" width="100" align="center">
+            <el-table-column v-if="currMenuName==='rechargeOrderIndex'" key="rechargeOrderIndex" label="操作" fixed="right" width="100" align="center">
                 <template slot-scope="scope">
                     <el-button size="mini" type="primary">确认收款</el-button>
                 </template>
@@ -54,7 +53,7 @@
                 currMenuName: '',
                 tableColumns: {
                     // 代理商管理
-                    'agent-index': [
+                    'agentIndex': [
                         { label: '序号', width: '50', type: 'index' },
                         { label: '公司名称', property: 'componyName', width: '150' },
                         { label: '所在地', property: 'address', width: '200' },
@@ -63,7 +62,7 @@
                         { label: '合作状态', property: 'status', width: '100' },
                     ],
                     // 财务公司管理
-                    'finance_company-index': [
+                    'financeCompanyIndex': [
                         { label: '序号', width: '50', type: 'index' },
                         { label: '公司名称', property: 'componyName', width: '150' },
                         { label: '来源', property: 'componyName', width: '150' },
@@ -74,7 +73,7 @@
                         { label: '合作状态', property: 'status', width: '100' },
                     ],
                     // 企业账簿管理
-                    'busi_books-index': [
+                    'busiBooksIndex': [
                         { label: '序号', width: '50', type: 'index' },
                         { label: '企业名称', property: 'componyName', width: '150' },
                         { label: '所在地', property: 'address', width: '200' },
@@ -85,7 +84,7 @@
                         { label: '建账时间', property: 'status', width: '100' },
                     ],
                     // 充值订单管理
-                    'recharge_order-index': [
+                    'rechargeOrderIndex': [
                         { label: '序号', width: '50', type: 'index' },
                         { label: '订单号', property: 'componyName', width: '150' },
                         { label: '来源', property: 'address', width: '150' },
@@ -146,17 +145,5 @@
 </script>
 
 <style lang="scss">
-    .list-table {
-        th {
-            background-color: #f5f5f5;
-            border-right: 0;
-            font-size: 14px;
-            color: #404040;
-        }
-        td {
-            font-size: 12px;
-            color: #404040
-        }
-    }
 </style>
 

@@ -1,7 +1,7 @@
 <template>
     <div class="main-page add-info">
         <el-breadcrumb separator-class="el-icon-minus" class="title">
-            <el-breadcrumb-item :to="{ name: 'agent-index' }">代理商管理</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ name: 'agentIndex' }">代理商管理</el-breadcrumb-item>
             <el-breadcrumb-item>新代理商入驻</el-breadcrumb-item>
         </el-breadcrumb>
         <div class="top-btn">

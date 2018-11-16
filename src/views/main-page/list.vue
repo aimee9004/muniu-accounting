@@ -82,7 +82,7 @@
         methods: {
             goAddInfo() {
                 this.$router.push({
-                    name: 'new-agent'
+                    name: 'newAgent'
                 })
             },
             handleSizeChange(val) {
