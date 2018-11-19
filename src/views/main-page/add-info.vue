@@ -67,7 +67,7 @@
             </div>
             <p class="sub-title">充值设置</p>
             <div class="item-block">
-                <el-form-item label="兑换比例：">
+                <el-form-item label="兑换比例：" class="special-item">
                     ￥10.00元 = 
                     <el-input v-model="formData.setsDouNum" class="small-input"></el-input> 金豆
                 </el-form-item>
@@ -149,6 +149,11 @@
         }        
         .el-form-item__content {
             width: 230px;
+        }
+        .special-item {
+            .el-form-item__content {
+                width: auto;
+            }
         }
     }
 </style>

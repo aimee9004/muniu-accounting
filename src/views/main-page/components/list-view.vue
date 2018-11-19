@@ -48,9 +48,14 @@
 
 <script>
     export default {
+        props: {
+            currMenuName: {
+                type: String,
+                default: ''
+            }
+        },
         data() {
             return {
-                currMenuName: '',
                 tableColumns: {
                     // 代理商管理
                     'agentIndex': [
@@ -126,19 +131,12 @@
             }
         },
         created() {
-            this.currMenuName = this.$route.name 
-            console.log('list-view created: ', this.currMenuName)
+            
         }, 
         methods: {     
             handleCurrentChange(val, old) {
                 this.currentRow = val;
                 console.log('currentRow: ', this.currentRow, old)
-            }
-        },
-        watch: {
-            $route(val) {
-                this.currMenuName = val.name 
-                console.log('list-view watch: ', this.currMenuName)
             }
         }
     }

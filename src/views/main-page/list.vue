@@ -1,35 +1,17 @@
 <template>
     <div class="main-page">
-        <div class="title">代理商管理</div>
-        <div class="top-btn">
-            <el-button @click="goAddInfo" class="base-solid-btn">新代理商加盟</el-button>
+        <div class="title">{{title}}</div>
+        <div class="top-btn" v-if="currMenuName==='agentIndex' || currMenuName==='financeCompanyIndex'">
+            <el-button @click="goAddInfo" class="base-solid-btn">{{currMenuName==='agentIndex'?'新代理商加盟':'新财务公司加盟'}}</el-button>
         </div>
         <div class="bg-white-block">
-            <ul class="filter-block clearfix">
-                <li>
-                    <span class="filter-label">名下财务公司数量：</span>
-                    <el-select v-model="filterData.underFinanceCompNumVal" placeholder="全部">
-                        <el-option v-for="item in underFinanceCompNumArr" :key="item.value" :label="item.label" :value="item.value"></el-option>
-                    </el-select>
-                </li>
-                <li>
-                    <span class="filter-label">入驻时长：</span>
-                    <el-select v-model="filterData.checkInTime" placeholder="全部">
-                        <el-option v-for="item in underFinanceCompNumArr" :key="item.value" :label="item.label" :value="item.value"></el-option>
-                    </el-select>
-                </li>
-                <li>
-                    <span class="filter-label">状态：</span>
-                    <el-select v-model="filterData.status" placeholder="正常">
-                        <el-option v-for="item in underFinanceCompNumArr" :key="item.value" :label="item.label" :value="item.value"></el-option>
-                    </el-select>
-                </li>
-                <li>
-                    <span class="filter-label">搜索：</span>
-                    <el-input v-model="filterData.searchInfo" placeholder="请输入关键字快速查找公司"></el-input>
-                </li>
-            </ul>
-            <list-view></list-view>
+
+            <!-- top filter -->
+            <top-filter :filterData="filterData" :currFilterList="currFilterList"></top-filter>
+
+            <!-- list view -->
+            <list-view :currMenuName="currMenuName"></list-view>
+
             <div class="pagination-block">
                 <el-pagination
                     @size-change="handleSizeChange"
@@ -48,19 +30,27 @@
 
 <script>
     import ListView from '@/views/main-page/components/list-view'
+    import TopFilter from '@/views/main-page/components/top-filter'
+    import { listConfig, allFilters } from '@/utils/default-config.js'
     export default {
         data() {
             return {
+                currMenuName: '',
+                title: '',
                 currentPage: 1,
                 totalNumber: 100,
                 pageSizes: [20, 50],    // 数据区间
                 pageSize: 20,           // 每页多少条数据
                 filterData: {
-                    underFinanceCompNumVal: '', // 名下财务公司数量
+                    underFinanceCompNum: '', // 名下财务公司数量
                     checkInTime: '',            // 入住时长
                     status: '',                 // 状态
                     searchInfo: '',             // 搜索
+
+                    origin: '',                 // 来源
+                    enterpriseAccountBookNum: '',   // 企业账簿数量
                 },
+                currFilterList: [],             // 当前列表 filters 内容
                 underFinanceCompNumArr: [{
                         value: '选项1',
                         label: '黄金糕'
@@ -79,6 +69,14 @@
                 }],
             }
         },
+        created() {
+            this.currMenuName = this.$route.name 
+            this.title = listConfig[this.currMenuName].title
+            // console.log('list-view created: ', this.currMenuName)
+            // console.log('11111=======', listConfig[this.currMenuName].filters)
+            // console.log('2222222=======', allFilters)
+            this.getCurrFilterList(listConfig[this.currMenuName].filters)
+        },
         methods: {
             goAddInfo() {
                 this.$router.push({
@@ -90,10 +88,39 @@
             },
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
+            },
+            getCurrFilterList(currKeysArr) {
+                // 清数据
+                this.currFilterList = []
+                if(currKeysArr.length > 0) {
+                    for(let i = 0; i < currKeysArr.length; i++) {
+                        let info = allFilters.filter(v => v.key === currKeysArr[i])
+                        this.currFilterList = this.currFilterList.concat(info)
+                    }
+                    console.log('this.currFilterList: ', this.currFilterList)
+                    this.setList()
+                }
+            },
+            setList(key, list) {
+                for(let i = 0; i < this.currFilterList.length; i++) {
+                    // if(this.currFilterList[i].key === key) {
+                        this.currFilterList[i].list = this.underFinanceCompNumArr
+                    // }
+                }
             }
         },
         components: {
-            ListView
+            ListView, TopFilter
+        },
+        watch: {
+            $route(val) {
+                this.currMenuName = val.name 
+                this.title = listConfig[this.currMenuName].title
+                // console.log('list-view watch: ', this.currMenuName)
+                // console.log('watch 11111', listConfig[this.currMenuName].filters)
+                // console.log('watch 2222222', allFilters)
+                this.getCurrFilterList(listConfig[this.currMenuName].filters)                
+            }
         }   
     }
 </script>
@@ -104,12 +131,6 @@
             background-color: white;
             overflow: hidden;
             padding: 20px;
-        }
-        .filter-block {
-            .filter-label {
-                font-size: 14px;
-                color: #5B5B5B;
-            }
         }
         .pagination-block {
             margin: 40px auto;
